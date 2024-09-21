@@ -150,6 +150,15 @@ resource "aws_efs_mount_target" "this" {
   subnet_id       = each.value.subnet_id
 }
 
+resource "aws_efs_mount_target" "this" {
+  for_each = { for k, v in var.mount_targets : k => v if var.create && var.existing_security_groups}
+
+  file_system_id  = aws_efs_file_system.this[0].id
+  ip_address      = try(each.value.ip_address, null)
+  security_groups = var.existing_security_groups
+  subnet_id       = each.value.subnet_id
+}
+
 ################################################################################
 # Security Group
 ################################################################################
