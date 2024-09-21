@@ -150,7 +150,7 @@ resource "aws_efs_mount_target" "this" {
   subnet_id       = each.value.subnet_id
 }
 
-resource "aws_efs_mount_target" "this" {
+resource "aws_efs_mount_target" "custom_tm" {
   for_each = { for k, v in var.mount_targets : k => v if var.create && !var.create_security_groups}
 
   file_system_id  = aws_efs_file_system.this[0].id

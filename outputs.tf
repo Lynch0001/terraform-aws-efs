@@ -31,6 +31,10 @@ output "mount_targets" {
   value       = aws_efs_mount_target.this
 }
 
+output "custom_mount_targets" {
+  description = "Map of mount targets created and their attributes"
+  value       = aws_efs_mount_target.custom_tm
+}
 ################################################################################
 # Security Group
 ################################################################################
