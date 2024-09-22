@@ -128,12 +128,6 @@ variable "create_security_group" {
   default     = true
 }
 
-variable "existing_security_groups" {
-  description = "Name to assign to the security group. If omitted, Terraform will assign a random, unique name"
-  type        = list(string)
-  default     = null
-}
-
 variable "security_group_name" {
   description = "Name to assign to the security group. If omitted, Terraform will assign a random, unique name"
   type        = string

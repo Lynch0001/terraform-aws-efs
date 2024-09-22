@@ -155,7 +155,7 @@ resource "aws_efs_mount_target" "custom_tm" {
 
   file_system_id  = aws_efs_file_system.this[0].id
   ip_address      = try(each.value.ip_address, null)
-  security_groups = var.existing_security_groups
+  security_groups = each.value.security_groups
   subnet_id       = each.value.subnet_id
 }
 
